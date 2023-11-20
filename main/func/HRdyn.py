@@ -15,7 +15,7 @@ Vsyn1 = 2
 Vsyn2 = -1.5
 
 
-def dynamic( y, t, adj, gc ): #要求这里adj矩阵里的1是指向行节点号
+def dynamic( y, t, adj, gc ): 
     p, q, n = np.split(y, 3)  # [n],[n],[n]
     Tp = 1 / (1 + np.exp(-lam * (p - Osyn)))
     cp = gc * (Vsyn1 - p) * (adj.dot(Tp))  # all are excited links
