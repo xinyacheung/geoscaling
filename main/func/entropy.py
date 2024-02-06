@@ -2,7 +2,7 @@ import numpy as np
 import networkx as nx
 
 def get_energy_bound(A,cluster,w):
-    n = A.shape[0] # the number of nodes
+    n = A.shape[0] 
     D = np.zeros((n,n))
     new_A = np.zeros((n,n))
     for i in range(1,n-1):
@@ -11,7 +11,7 @@ def get_energy_bound(A,cluster,w):
             D[j,i] = D[i,j]
     
     for i in range(n):
-        adj = A[i,:] # the nodes i out-connection
+        adj = A[i,:] 
         dis = D[i,:]
         
         sorted_indices = dis.argsort()[::-1] 
@@ -41,7 +41,6 @@ def info_entropy(A):
     X= normalized_nei
     X[X == 0] = 1
 
-    #compute entropy
     entropy = -np.sum(X * np.log(X), axis=1)
 
     return entropy

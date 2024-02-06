@@ -55,8 +55,6 @@ def plot_p_vs_distance(A, cluster,alpha, n_bin=50,label_size=17):
     plt.xlabel('Distance',fontsize=label_size)
     plt.ylabel('Connected probability',fontsize=label_size)
 
-    plt.savefig(f'prob_alpha{alpha}.png',bbox_inches='tight',dpi=500)
-
 def power_weight(A):
     alpha = 3.0  # power-law index
     x_min = 1  # minimum value
@@ -69,24 +67,23 @@ def power_weight(A):
                 k+=1
     return A
 
-def get_real_A_with_real_alpha(num,alpha,lambda_normed,k=20,sd=1,name='whole',parallel_edges=False,method='exact',f=1):
+def get_real_A_with_real_alpha(num,alpha,lambda_normed,k=20,sd=1,name='whole',parallel_edges=False,method='exact',f=1,seed=123):
     
-    path = env + '/dataset/'
-    ## load neuron locations
+    path = env + '/dataset/' ## load neuron locations
     points = np.load(path+f'{name}.npy')
     points = points.astype(float)
-    num = num # the number of nodes in the network
+    num = num 
+    np.random.seed(seed)
     selected_rows = np.random.choice(points.shape[0], num, replace=False)
-    cluster0 = points[selected_rows, :] #the locations of neurons
+    cluster0 = points[selected_rows, :]
     
     max_possible_dist = np.sqrt(np.sum((np.max(points, axis=0) - np.min(points, axis=0))**2))
     norm_const = max_possible_dist
     
     cluster = cluster0/max_possible_dist
     
-    k = int(np.round(k/f)) #Only fraction f of all edges will be kept
+    k = int(np.round(k/f))
     
-    # generate adjacency matrix
     N = cluster.shape[0]
     num_links = int(np.round(np.random.normal(N*k, np.sqrt(N)*sd)))
 

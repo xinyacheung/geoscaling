@@ -11,7 +11,7 @@ def main(num, ave_deg):
     real_name=[]
     alpha_list = np.linspace(0,1.5,15)
     for alpha in alpha_list:
-        for times in range(1): # average over times
+        for _ in range(1000): # average over times
             lambda_normed=0
             keep_f = 1         
             A, _, _ = get_real_A_with_real_alpha(num=num,alpha=alpha,lambda_normed=lambda_normed,k=ave_deg,sd=2,name='whole',parallel_edges=False,method='exact',f=keep_f)
@@ -31,7 +31,6 @@ def main(num, ave_deg):
                     else:
                         real_C[i,j] = np.abs(C[i,j]) 
 
-            ## participation coefficient
             communities_generator = nx.community.louvain_communities(G)
             cm = [list(s) for s in communities_generator]
 
