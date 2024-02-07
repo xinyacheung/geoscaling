@@ -11,10 +11,10 @@ def main(num, ave_deg):
     real_name=[]
     alpha_list = np.linspace(0,1.5,15)
     for alpha in alpha_list:
-        for _ in range(1000): # average over times
+        for sd in range(1000): # average over times
             lambda_normed=0
             keep_f = 1         
-            A, _, _ = get_real_A_with_real_alpha(num=num,alpha=alpha,lambda_normed=lambda_normed,k=ave_deg,sd=2,name='whole',parallel_edges=False,method='exact',f=keep_f)
+            A, _, _ = get_real_A_with_real_alpha(num=num,alpha=alpha,lambda_normed=lambda_normed,k=ave_deg,sd=2,name='whole',parallel_edges=False,method='exact',f=keep_f,seed=sd)
 
             G = nx.from_numpy_array(A,create_using=nx.DiGraph())
             print(len(G.nodes))
