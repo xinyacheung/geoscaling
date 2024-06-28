@@ -1,6 +1,6 @@
 # geoscaling
 
-This repository is for the paper "Geometric scaling law in Drosophila connectome".
+This repository is for the paper "Geometric scaling law in real neuronal networks".
 
 geo-scaling.py is an example of generating network models with a tunable geometric criticality coefficient $\alpha$.
 
