@@ -1,6 +1,4 @@
-# geoscaling
-
-This repository is for the paper "Geometric scaling law in real neuronal networks".
+# [Geometric scaling law in real neuronal networks](https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.133.138401)
 
 geo-scaling.py is an example of generating network models with a tunable geometric criticality coefficient $\alpha$.
 
